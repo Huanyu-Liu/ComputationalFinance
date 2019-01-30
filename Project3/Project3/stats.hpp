@@ -8,9 +8,9 @@
 
 #ifndef stats_hpp
 #define stats_hpp
-
 #include <stdio.h>
 #include <cmath>
+
 #endif /* stats_hpp */
 
 namespace stats {

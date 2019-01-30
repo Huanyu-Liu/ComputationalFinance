@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		AACB136C21FFF23C00531616 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACB136B21FFF23C00531616 /* main.cpp */; };
+		AACB13C022018E9400531616 /* problem1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACB13B422018E9400531616 /* problem1.cpp */; };
+		AACB13C222018E9400531616 /* problem2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACB13B722018E9400531616 /* problem2.cpp */; };
+		AACB13C322018E9400531616 /* heston_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACB13B922018E9400531616 /* heston_model.cpp */; };
+		AACB13C422018E9400531616 /* random_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACB13BB22018E9400531616 /* random_generator.cpp */; };
+		AACB13C522018E9400531616 /* stats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACB13BF22018E9400531616 /* stats.cpp */; };
+		AACB13C822018EE100531616 /* options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AACB13C722018EE100531616 /* options.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,18 @@
 /* Begin PBXFileReference section */
 		AACB136821FFF23C00531616 /* Project3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project3; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACB136B21FFF23C00531616 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AACB13B422018E9400531616 /* problem1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problem1.cpp; sourceTree = "<group>"; };
+		AACB13B622018E9400531616 /* heston_model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = heston_model.hpp; sourceTree = "<group>"; };
+		AACB13B722018E9400531616 /* problem2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = problem2.cpp; sourceTree = "<group>"; };
+		AACB13B922018E9400531616 /* heston_model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = heston_model.cpp; sourceTree = "<group>"; };
+		AACB13BA22018E9400531616 /* problem2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = problem2.hpp; sourceTree = "<group>"; };
+		AACB13BB22018E9400531616 /* random_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_generator.cpp; sourceTree = "<group>"; };
+		AACB13BC22018E9400531616 /* random_generator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_generator.hpp; sourceTree = "<group>"; };
+		AACB13BD22018E9400531616 /* stats.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stats.hpp; sourceTree = "<group>"; };
+		AACB13BE22018E9400531616 /* problem1.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = problem1.hpp; sourceTree = "<group>"; };
+		AACB13BF22018E9400531616 /* stats.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stats.cpp; sourceTree = "<group>"; };
+		AACB13C622018EE100531616 /* options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = options.hpp; sourceTree = "<group>"; };
+		AACB13C722018EE100531616 /* options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = options.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,18 @@
 			isa = PBXGroup;
 			children = (
 				AACB136B21FFF23C00531616 /* main.cpp */,
+				AACB13C722018EE100531616 /* options.cpp */,
+				AACB13C622018EE100531616 /* options.hpp */,
+				AACB13B922018E9400531616 /* heston_model.cpp */,
+				AACB13B622018E9400531616 /* heston_model.hpp */,
+				AACB13B422018E9400531616 /* problem1.cpp */,
+				AACB13BE22018E9400531616 /* problem1.hpp */,
+				AACB13B722018E9400531616 /* problem2.cpp */,
+				AACB13BA22018E9400531616 /* problem2.hpp */,
+				AACB13BB22018E9400531616 /* random_generator.cpp */,
+				AACB13BC22018E9400531616 /* random_generator.hpp */,
+				AACB13BF22018E9400531616 /* stats.cpp */,
+				AACB13BD22018E9400531616 /* stats.hpp */,
 			);
 			path = Project3;
 			sourceTree = "<group>";
@@ -118,7 +148,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AACB13C322018E9400531616 /* heston_model.cpp in Sources */,
+				AACB13C522018E9400531616 /* stats.cpp in Sources */,
+				AACB13C222018E9400531616 /* problem2.cpp in Sources */,
+				AACB13C422018E9400531616 /* random_generator.cpp in Sources */,
 				AACB136C21FFF23C00531616 /* main.cpp in Sources */,
+				AACB13C822018EE100531616 /* options.cpp in Sources */,
+				AACB13C022018E9400531616 /* problem1.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

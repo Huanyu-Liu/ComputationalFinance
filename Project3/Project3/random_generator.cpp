@@ -74,3 +74,10 @@ double* random_generator::stock_path(int size, double t, double r, double sigma,
     }
     return path;
 }
+
+unsigned long random_generator::get_seed(){
+    return seed;
+}
+void random_generator::set_seed(unsigned long seed){
+    this->seed = seed;
+}
