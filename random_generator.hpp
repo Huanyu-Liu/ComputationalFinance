@@ -5,7 +5,7 @@
 //  Created by Huanyu Liu on 1/21/19.
 //  Copyright © 2019 Huanyu Liu. All rights reserved.
 //
-#pragma once
+
 #ifndef random_generator_hpp
 #define random_generator_hpp
 
