@@ -17,7 +17,7 @@ class heston{
     double rho, r, s0, v0, sigma, alpha, beta, K, T;
     random_generator* rand;
 public:
-    heston(random_generator* rand, double rho, double r, double s0, double v0, double sigma, double alpha, double beta,double K, double T);
+    heston(double rho, double r, double s0, double v0, double sigma, double alpha, double beta,double K, double T);
     template <typename Function>
     double heston_model(int simulation_count, Function&& f1, Function&& f2, Function&& f3);
     double european_call_r(int simulation_count);

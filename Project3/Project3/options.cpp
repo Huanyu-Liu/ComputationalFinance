@@ -88,12 +88,12 @@ double options::theta(int simulation_count){
     double temp = T;
     double epsilon = 0.01;
     double call;
-    T += epsilon;
+    T -= epsilon;
     call = european_call(simulation_count);
-    T -= 2 * epsilon;
+    T += 2 * epsilon;
     call -= european_call(simulation_count);
     T = temp;
-    return T / 2 / epsilon;
+    return call / 2 / epsilon;
 }
 
 double options::vega(int simulation_count){

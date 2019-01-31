@@ -81,3 +81,6 @@ unsigned long random_generator::get_seed(){
 void random_generator::set_seed(unsigned long seed){
     this->seed = seed;
 }
+void random_generator::delfault(){
+    set_seed(1025);
+}

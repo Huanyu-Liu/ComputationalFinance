@@ -29,4 +29,5 @@ public:
     double* geometric_brownian_motion(int size, double t, double r, double sigma, double s);
     double* stock_path(int size, double t, double r, double sigma, double s0);
     void set_seed(unsigned long seed);
+    void delfault();
 };

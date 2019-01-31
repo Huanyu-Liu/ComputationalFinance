@@ -8,10 +8,8 @@
 
 #include "heston_model.hpp"
 
-
-
-heston::heston(random_generator* rand, double rho, double r, double s0, double v0, double sigma, double alpha, double beta, double K, double T){
-    this->rand = rand;
+heston::heston(double rho, double r, double s0, double v0, double sigma, double alpha, double beta, double K, double T){
+    this->rand = new random_generator;
     this->rho = rho;
     this->r = r;
     this->s0 = s0;
@@ -39,43 +37,22 @@ double heston::heston_model(int simulation_count, Function&& f1, Function&& f2, 
     return s_sum;
 }
 double heston::european_call_r(int simulation_count){
-    double sum = 0;
-    double temp;
-    rand->set_seed(589323);
-    for (int i = 0; i < simulation_count; i++){
-        temp = heston_model(simulation_count, f_1, f_1, f_1) - K;
-        sum += temp > 0 ? temp : 0;
-    }
-    return exp(-r * T) * sum / simulation_count;
+    return european_call(simulation_count, f_1, f_1, f_1);
 }
 
 double heston::european_call_p(int simulation_count){
-    double sum = 0;
-    double temp;
-    rand->set_seed(589323);
-    for (int i = 0; i < simulation_count; i++){
-        temp = heston_model(simulation_count, f_2, f_2, f_3) - K;
-        sum += temp > 0 ? temp : 0;
-    }
-    return exp(-r * T) * sum / simulation_count;
+    return european_call(simulation_count, f_2, f_2, f_3);
 }
 
 double heston::european_call_f(int simulation_count){
-    double sum = 0;
-    double temp;
-    rand->set_seed(589323);
-    for (int i = 0; i < simulation_count; i++){
-        temp = heston_model(simulation_count, f_2, f_3, f_3) - K;
-        sum += temp > 0 ? temp : 0;
-    }
-    return exp(-r * T) * sum / simulation_count;
+    return european_call(simulation_count, f_2, f_3, f_3);
 }
 
 template <typename Function>
 double heston::european_call(int simulation_count, Function&& f1, Function&& f2, Function&& f3){
     double sum = 0;
     double temp;
-    rand->set_seed(589323);
+    rand->delfault();
     for (int i = 0; i < simulation_count; i++){
         temp = heston_model(simulation_count, f1, f2, f3) - K;
         sum += temp > 0 ? temp : 0;
