@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <cmath>
 #include "max.hpp"
+#include "halton_sequence.hpp"
 #endif /* option_hpp */
 
 class option{
@@ -24,6 +25,9 @@ public:
     double binomial_method2(int n);
     double binomial_method3(int n);
     double binomial_method4(int n);
+    double trinomial(int n);
+    double trinomial_log(int n);
+    double halton_option_price(int n, int base1, int base2);
     inline void set_s0(double s0) {this->s0 = s0;}
     inline void set_r(double r){this->r = r;}
     inline void set_sigma(double sigma){this->sigma = sigma;}

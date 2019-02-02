@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AA5CEFAE2203EAA100A5B999 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5CEFAD2203EAA100A5B999 /* main.cpp */; };
-		AA5CEFB92204120C00A5B999 /* max.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5CEFB72204120C00A5B999 /* max.cpp */; };
 		AA5CEFBF2205053D00A5B999 /* option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5CEFBD2205053D00A5B999 /* option.cpp */; };
 		AA5CEFC222050FFE00A5B999 /* greeks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5CEFC022050FFE00A5B999 /* greeks.cpp */; };
+		AA5CEFC8220559C100A5B999 /* halton_sequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA5CEFC7220559C100A5B999 /* halton_sequence.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,12 +28,13 @@
 /* Begin PBXFileReference section */
 		AA5CEFAA2203EAA000A5B999 /* Project4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project4; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5CEFAD2203EAA100A5B999 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		AA5CEFB72204120C00A5B999 /* max.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = max.cpp; sourceTree = "<group>"; };
 		AA5CEFB82204120C00A5B999 /* max.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = max.hpp; sourceTree = "<group>"; };
 		AA5CEFBD2205053D00A5B999 /* option.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = option.cpp; sourceTree = "<group>"; };
 		AA5CEFBE2205053D00A5B999 /* option.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = option.hpp; sourceTree = "<group>"; };
 		AA5CEFC022050FFE00A5B999 /* greeks.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = greeks.cpp; sourceTree = "<group>"; };
 		AA5CEFC122050FFE00A5B999 /* greeks.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = greeks.hpp; sourceTree = "<group>"; };
+		AA5CEFC6220559C100A5B999 /* halton_sequence.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = halton_sequence.hpp; sourceTree = "<group>"; };
+		AA5CEFC7220559C100A5B999 /* halton_sequence.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = halton_sequence.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +68,12 @@
 			isa = PBXGroup;
 			children = (
 				AA5CEFAD2203EAA100A5B999 /* main.cpp */,
+				AA5CEFC7220559C100A5B999 /* halton_sequence.cpp */,
+				AA5CEFC6220559C100A5B999 /* halton_sequence.hpp */,
 				AA5CEFC022050FFE00A5B999 /* greeks.cpp */,
 				AA5CEFC122050FFE00A5B999 /* greeks.hpp */,
 				AA5CEFBD2205053D00A5B999 /* option.cpp */,
 				AA5CEFBE2205053D00A5B999 /* option.hpp */,
-				AA5CEFB72204120C00A5B999 /* max.cpp */,
 				AA5CEFB82204120C00A5B999 /* max.hpp */,
 			);
 			path = Project4;
@@ -133,8 +135,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA5CEFB92204120C00A5B999 /* max.cpp in Sources */,
 				AA5CEFAE2203EAA100A5B999 /* main.cpp in Sources */,
+				AA5CEFC8220559C100A5B999 /* halton_sequence.cpp in Sources */,
 				AA5CEFC222050FFE00A5B999 /* greeks.cpp in Sources */,
 				AA5CEFBF2205053D00A5B999 /* option.cpp in Sources */,
 			);

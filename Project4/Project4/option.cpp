@@ -18,32 +18,6 @@ option::option(double s0, double k, double r, double sigma, double t, bool is_ca
     this->is_european = is_european;
 }
 
-//inline void option::set_s0(double s0){
-//    this->s0 = s0;
-//}
-//inline void option::set_r(double r){
-//    this->r = r;
-//}
-//inline void option::set_sigma(double sigma){
-//    this->sigma = sigma;
-//}
-//inline void option::set_t(double t){
-//    this->t = t;
-//}
-//
-//inline double option::get_s0(){
-//    return s0;
-//}
-//inline double option::get_r(){
-//    return r;
-//}
-//inline double option::get_sigma(){
-//    return sigma;
-//}
-//inline double option::get_t(){
-//    return t;
-//}
-
 double option::binomial_method1(int n){
     double delta = t / n;
     double c = 0.5 * (exp(-r * delta) + exp((r + sigma * sigma) * delta));
@@ -128,4 +102,76 @@ double option::binomial_tree(int n, double u, double d, double p){
         }
     }
     return payoff[0];
+}
+
+double option::trinomial(int n){
+    double delta = t / n;
+    double d = exp(-sigma * sqrt(3 * delta));
+    double u = 1 / d;
+    double a = r * r * delta * delta + sigma * sigma * delta;
+    double b = 1 - d;
+    double c = u - d;
+    double pd = (r * delta * (1 - u) + a) / c / b;
+    double pu = (r * delta * b + a) / c / (u - 1);
+    double pm = 1 - pd - pu;
+    int final_branch = 2 * n + 1;
+    double stock_price[final_branch];
+    double payoff[final_branch];
+    stock_price[0] = s0 * pow(u, n);
+    payoff[0] = max::max(stock_price[0] - k, 0);
+    for (int i = 0; i < final_branch - 1; ++i){
+        stock_price[i + 1] = stock_price[i] * d;
+        payoff[i + 1] = max::max(stock_price[i + 1] - k, 0);
+    }
+    for (int i = n; i > 0; i--){
+        for (int j = 0; j < i * 2 - 1; ++j){
+            payoff[j] = pu * payoff[j] + pm * payoff[j + 1] + pd * payoff[j + 2];
+        }
+    }
+    payoff[0] *= exp(-r * t);
+    return payoff[0];
+}
+
+double option::trinomial_log(int n){
+    double delta = t / n;
+    double delta_xu = sigma * sqrt(3 * delta);
+    double delta_xd = - delta_xu;
+    double a = (r - sigma * sigma / 2) * delta;
+    double b = sigma * sigma * delta;
+    double c = a * delta;
+    double pd = 0.5 * ((b + c) / delta_xu / delta_xu - a / delta_xu);
+    double pu = pd + a / delta_xu;
+    double pm = 1 - pu - pd;
+    int final_branch = 2 * n + 1;
+    double log_s[final_branch];
+    double payoff[final_branch];
+    double x0 = log(s0);
+    log_s[0] = x0 + n * delta_xu;
+    for (int i = 0; i < final_branch - 1; ++i){
+        log_s[i + 1] = log_s[i] - delta_xu;
+    }
+    return 0;
+}
+
+double option::halton_option_price(int n, int base1, int base2){
+    double* h1 = halton::halton_sequence(n, base1);
+    double* h2 = halton::halton_sequence(n, base2);
+    double* z1 = new double[n];
+    double* z2 = new double[n];
+    double temp;
+    double temp2;
+    double sum = 0;
+    for (int i = 0; i < n; i++){
+        temp = sqrt(-2 * log(h1[i]));
+        z1[i] = temp * cos(2 * M_PI * h2[i]);
+        z2[i] = temp * sin(2 * M_PI * h2[i]);
+    }
+    for (int i = 0; i < n; i++){
+        temp = s0 * exp((r - sigma * sigma / 2) * t + sigma * sqrt(t) * z1[i]);
+        temp = max::max(temp - k, 0);
+        temp2 = s0 * exp((r - sigma * sigma / 2) * t + sigma * sqrt(t) * z2[i]);
+        temp2 = max::max(temp2 - k, 0);
+        sum += temp + temp2;
+    }
+    return exp(-r * t) * sum / 2 / n;
 }

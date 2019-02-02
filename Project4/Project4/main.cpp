@@ -70,7 +70,6 @@ int main(int argc, const char * argv[]) {
     european_option3.set_s0(s0);
     for (int i = 1; i < 39; i++){
         european_option3.set_t(i * 0.01);
-        
         cout << greeks::delta(european_option3, period) << endl;
     }
 
@@ -87,5 +86,20 @@ int main(int argc, const char * argv[]) {
     double american_put_price = american_put.binomial_method1(period);
     cout << european_put_price << endl;
     cout << american_put_price << endl;
+    
+    // Problem 5
+    t = 0.5;
+    r = 0.05;
+    s0 = 32;
+    sigma = 0.24;
+    k = 30;
+    int parts[9] = {10, 15, 20, 40, 70, 80, 100, 200, 500};
+    option european_call5(s0,k,r,sigma,t,is_call,is_european);
+    for (int i = 0; i < 9; i++){
+        cout << european_call5.trinomial(parts[i]) << endl;
+    }
+    
+    // Problem 6
+    cout << european_call5.halton_option_price(200, 2, 7) << endl;
     return 0;
 }
