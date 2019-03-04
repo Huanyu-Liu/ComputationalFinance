@@ -63,10 +63,11 @@ double* random_generator::geometric_brownian_motion(int size, double t, double r
 double* random_generator::stock_path(int size, double t, double r, double sigma, double s0){
     double* path = new double[size];
     double delta = t/size;
+    double* bm = brownian_motion(size - 1, delta);
     path[0] = s0;
     for (int i = 1; i < size; i++){
         if (path[i - 1] > 0){
-            path[i] = path[i-1] + r * delta * path[i - 1] + sigma * path[i - 1] * brownian_motion(1, delta)[0];
+            path[i] = path[i-1] + r * delta * path[i-1] + sigma * path[i - 1] * bm[i - 1];
         }
         else{
             path[i] = 0;

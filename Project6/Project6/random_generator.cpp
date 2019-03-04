@@ -63,16 +63,27 @@ double* random_generator::geometric_brownian_motion(int size, double t, double r
 double* random_generator::stock_path(int size, double t, double r, double sigma, double s0){
     double* path = new double[size];
     double delta = t/size;
+    double* bm = brownian_motion(size - 1, delta);
     path[0] = s0;
     for (int i = 1; i < size; i++){
         if (path[i - 1] > 0){
-            path[i] = path[i-1] + r * delta * path[i - 1] + sigma * path[i - 1] * brownian_motion(1, delta)[0];
+            path[i] = path[i-1] + r * delta * path[i-1] + sigma * path[i - 1] * bm[i - 1];
         }
         else{
             path[i] = 0;
         }
     }
     return path;
+}
+
+double * random_generator::exponential(int size, double lambda){
+    double * result = new double[size];
+    double uniform;
+    for (int i = 0; i < size; ++i){
+        uniform = uniform_generator();
+        result[i] = -lambda * log(uniform);
+    }
+    return result;
 }
 
 unsigned long random_generator::get_seed(){

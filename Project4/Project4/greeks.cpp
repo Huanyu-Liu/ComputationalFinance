@@ -10,7 +10,7 @@
 
 double greeks::delta(option op, int n){
     double s0 = op.get_s0();
-    double epsilon = 0.01;
+    double epsilon = 1;
     op.set_s0(s0 + epsilon);
     double c0 = op.binomial_method1(n);
     op.set_s0(s0 - epsilon);
@@ -20,7 +20,7 @@ double greeks::delta(option op, int n){
 
 double greeks::theta(option op, int n){
     double t = op.get_t();
-    double epsilon = 0.01;
+    double epsilon = 0.1;
     op.set_t(t - epsilon);
     double c0 = op.binomial_method1(n);
     op.set_t(t + epsilon);
@@ -40,7 +40,7 @@ double greeks::gamma(option op, int n){
 
 double greeks::vega(option op, int n){
     double sigma = op.get_sigma();
-    double epsilon = 0.01;
+    double epsilon = 0.1;
     op.set_sigma(sigma + epsilon);
     double c0 = op.binomial_method1(n);
     op.set_sigma(sigma - epsilon);
@@ -50,7 +50,7 @@ double greeks::vega(option op, int n){
 
 double greeks::rho(option op, int n){
     double r = op.get_r();
-    double epsilon = 0.01;
+    double epsilon = 0.1;
     op.set_r(r + epsilon);
     double c0 = op.binomial_method1(n);
     op.set_r(r - epsilon);

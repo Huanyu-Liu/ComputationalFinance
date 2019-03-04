@@ -135,7 +135,6 @@ double option::trinomial(int n){
 double option::trinomial_log(int n){
     double delta = t / n;
     double delta_xu = sigma * sqrt(3 * delta);
-    double delta_xd = - delta_xu;
     double a = (r - sigma * sigma / 2) * delta;
     double b = sigma * sigma * delta;
     double c = a * delta;
@@ -143,14 +142,22 @@ double option::trinomial_log(int n){
     double pu = pd + a / delta_xu;
     double pm = 1 - pu - pd;
     int final_branch = 2 * n + 1;
-    double log_s[final_branch];
+    double stock_price[final_branch];
     double payoff[final_branch];
     double x0 = log(s0);
-    log_s[0] = x0 + n * delta_xu;
+    stock_price[0] = x0 + n * delta_xu;
+    payoff[0] = max::max(exp(stock_price[0]) - k, 1);
     for (int i = 0; i < final_branch - 1; ++i){
-        log_s[i + 1] = log_s[i] - delta_xu;
+        stock_price[i + 1] = stock_price[i] - delta_xu;
+        payoff[i + 1] = max::max(exp(stock_price[i + 1]) - k, 0);
     }
-    return 0;
+    for (int i = n; i > 0; i--){
+        for (int j = 0; j < i * 2 - 1; ++j){
+            payoff[j] = pu * payoff[j] + pm * payoff[j + 1] + pd * payoff[j + 2];
+        }
+    }
+    payoff[0] *= exp(-r * t);
+    return payoff[0];
 }
 
 double option::halton_option_price(int n, int base1, int base2){
