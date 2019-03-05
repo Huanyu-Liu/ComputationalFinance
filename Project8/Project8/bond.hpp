@@ -25,8 +25,10 @@ public:
     double option_cpbond(double *coupon, double *T, int cp_count, double t, double x, int path_count);
     inline void set_r0(double r0){this->r0 = r0;}
     static double sum(vector<double> vector, int start, int end);
+    double cir_bond(double T, double face, int path_count);
     double cir_option(double S, double face, double T, double x, int path_count);
     double cir_explicit(double T, double t, double rt, double face);
-    double g2_model(double S, double face, double T, double strike, double phi, double rho, double a, double b, double eta, int path_count);
+    double g2_model_bond(double S, double face, double phi, double rho, double a, double b, double eta, double x0, double y0, int path_count);
+    double g2_model_option(double S, double face, double T, double strike, double phi, double rho, double a, double b, double eta, int path_count);
     static double chi_square(double x, double p, double q);
 };

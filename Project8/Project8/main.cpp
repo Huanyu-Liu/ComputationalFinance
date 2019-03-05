@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include "bond.hpp"
+#include <ctime>
+
 using std::cout;
 using std::endl;
 int main(int argc, const char * argv[]) {
@@ -21,8 +23,9 @@ int main(int argc, const char * argv[]) {
     double face = 1000;
     double t = 0;
     int path_count = 1000;
+    std::clock_t start = std::clock();
     Bond bond(r0,sigma,k,r_bar);
-    cout << bond.vasicek(T, face, path_count) << endl;
+    cout << "Q1(a): " << bond.vasicek(T, face, path_count) << endl;
     
     // (b)
     double coupon[8];
@@ -35,20 +38,24 @@ int main(int argc, const char * argv[]) {
     for (int i = 1; i != 8; ++i){
         T_b[i] = T_b[i - 1] + 0.5;
     }
-    cout << bond.coupon_bond(coupon, T_b, 8, path_count) << endl;
+    cout << "Q1(b): " << bond.coupon_bond(coupon, T_b, 8, path_count) << endl;
     
     // (c)
     double x = 980;
     t = 0.25;
-    cout << bond.option_zcb(T, t, face, x, path_count) << endl;
-    cout << bond.option_cpbond(coupon, T_b, 8, t, x, path_count) << endl;
+    
+    cout << "Q1(c): " << bond.option_zcb(T, t, face, x, path_count) << endl;
+    //path_count = 500;
+    // (d)
+    cout << "Q1(d): " << bond.option_cpbond(coupon, T_b, 8, t, x, path_count) << endl;
     
     // Problem 2
     k = 0.92;
     r_bar = 0.055;
     double S = 1;
     Bond bond2(r0,sigma,k,r_bar);
-    cout << bond2.cir_option(S, face, T, x, path_count) << endl;
+    //cout << bond2.cir_bond(1, 1000, path_count) << endl;
+    cout << "Q2(a): " << bond2.cir_option(S, face, T, x, path_count) << endl;
     
     // Problem 3
     double phi = 0.03, rho = 0.7, a = 0.1, b = 0.3, eta = 0.08;
@@ -56,7 +63,10 @@ int main(int argc, const char * argv[]) {
     r0 = 0.03;
     x = 985;
     Bond bond3(r0,sigma,k,r_bar);
-    double price3 = bond3.g2_model(S, face, T, x, phi, rho, a, b, eta, path_count);
-    cout << price3 << endl;
+    //cout << bond3.g2_model_bond(S, face, phi, rho, a, b, eta, 0, 0, path_count) << endl;
+    double price3 = bond3.g2_model_option(S, face, T, x, phi, rho, a, b, eta, path_count);
+    cout << "Q3: " << price3 << endl;
+    double duration = (std::clock() - start) / (double) CLOCKS_PER_SEC;
+    cout << "Total runtime: " << duration << endl;
     return 0;
 }

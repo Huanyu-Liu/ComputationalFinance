@@ -22,8 +22,8 @@ double random_generator::uniform_generator(){
 vector<double> random_generator::normal_generator(int size){
     vector<double> box_muller_norm;
     for (int i = 0; i < size; i+=2){
-        double u1 = uniform_generator();
-        double u2 = uniform_generator();
+        double u1 = this->uniform_generator();
+        double u2 = this->uniform_generator();
         box_muller_norm.push_back(sqrt(-2 * log(u1)) * cos(2 * M_PI * u2));
         box_muller_norm.push_back(sqrt(-2 * log(u1)) * sin(2 * M_PI * u2));
     }
