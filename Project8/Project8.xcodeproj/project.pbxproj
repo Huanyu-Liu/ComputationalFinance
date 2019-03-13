@@ -64,8 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				AAC3AEB3222B4FA6002F3A91 /* main.cpp */,
-				AAC3AEBA222B4FE5002F3A91 /* bond.cpp */,
 				AAC3AEBB222B4FE5002F3A91 /* bond.hpp */,
+				AAC3AEBA222B4FE5002F3A91 /* bond.cpp */,
 				AAC3AEC0222B5420002F3A91 /* random_generator.cpp */,
 				AAC3AEC1222B5420002F3A91 /* random_generator.hpp */,
 			);

@@ -229,7 +229,7 @@ double Bond::g2_model_option(double S, double face, double T, double strike, dou
     double r, x0, y0, R;
     double bond, option;
     double sum = 0;
-    random_generator rg;
+    random_generator rg(19239947);
     for (int i = 0; i != path_count; ++i){
         x0 = 0;
         y0 = 0;
@@ -237,11 +237,12 @@ double Bond::g2_model_option(double S, double face, double T, double strike, dou
         vector<double> bm = rg.brownian_motion(2 * step, delta);
         for (int j = 0; j != step; ++j){
             x0 += -a * x0 * delta + sigma * bm[j];
-            y0 += -b * y0 * delta + eta * (rho * bm[j] + (1 - rho) * bm[step + j]);
+            y0 += -b * y0 * delta + eta * (rho * bm[j] + sqrt(1 - rho * rho) * bm[step + j]);
             r = x0 + y0 + phi;
             R += r;
         }
         bond = this->g2_model_bond(S - T, face, phi, rho, a, b, eta, x0, y0, path_count);
+        std::cout << bond << std::endl;
         option = strike - bond > 0 ? strike - bond : 0;
         sum += option * exp(-delta * R);
     }

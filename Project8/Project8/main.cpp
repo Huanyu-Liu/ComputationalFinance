@@ -44,10 +44,10 @@ int main(int argc, const char * argv[]) {
     double x = 980;
     t = 0.25;
     
-    cout << "Q1(c): " << bond.option_zcb(T, t, face, x, path_count) << endl;
+    //cout << "Q1(c): " << bond.option_zcb(T, t, face, x, path_count) << endl;
     //path_count = 500;
     // (d)
-    cout << "Q1(d): " << bond.option_cpbond(coupon, T_b, 8, t, x, path_count) << endl;
+    //cout << "Q1(d): " << bond.option_cpbond(coupon, T_b, 8, t, x, path_count) << endl;
     
     // Problem 2
     k = 0.92;
@@ -55,7 +55,7 @@ int main(int argc, const char * argv[]) {
     double S = 1;
     Bond bond2(r0,sigma,k,r_bar);
     //cout << bond2.cir_bond(1, 1000, path_count) << endl;
-    cout << "Q2(a): " << bond2.cir_option(S, face, T, x, path_count) << endl;
+    //cout << "Q2(a): " << bond2.cir_option(S, face, T, x, path_count) << endl;
     
     // Problem 3
     double phi = 0.03, rho = 0.7, a = 0.1, b = 0.3, eta = 0.08;
